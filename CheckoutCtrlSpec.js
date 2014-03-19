@@ -1,12 +1,21 @@
 describe("checkout controller", function() {
     var controller;
+    var checkout;
 
     beforeEach(function() {
-        controller = new CheckoutCtrl();
+        checkout = jasmine.createSpyObj("Checkout", ['scan']);
+        controller = new CheckoutCtrl(checkout);
     });
 
-    it("increase total on click of add", function() {
+    // it("increase total on click of add", function() {
+    //     controller.add("kiwi");
+    //     expect(controller.checkout.total()).toEqual(controller.checkout.priceList.priceFor("kiwi"));
+    // });
+
+    it("scan is being called", function() {
         controller.add("kiwi");
-        expect(controller.checkout.total()).toEqual(50);
+        expect(checkout.scan).toHaveBeenCalledWith("kiwi");
     });
+
+
 });

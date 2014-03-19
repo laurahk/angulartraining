@@ -1,18 +1,18 @@
  function PriceList() {
-    this.prices = {
-        "kiwi": {price: 50},
+    var prices = {
+        "kiwi": {price: 60},
         "banana": {price: 75}
     };
 
     this.priceFor = function(item) {
-        return this.prices[item].price;
+        return prices[item].price;
     }
  }
 
- function Checkout() {
+ function Checkout(priceList) {
 
     var items = [];
-    this.priceList = new PriceList();
+    this.priceList = priceList;
 
     this.total = function() {
         var cost = 0;
