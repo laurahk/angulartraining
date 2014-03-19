@@ -9,10 +9,12 @@
             //     })
             // })
 
-            items = [];
-            cost = 0;
+            function Checkout() {
 
-            total = function() {
+                var items = [];
+                var cost = 0;
+
+                this.total = function() {
                 for (i = 0; i < items.length; i++)
                 {
                     if (items[i] == "kiwi")
@@ -21,19 +23,32 @@
                     }
                 }
                 return cost;
+                }
+
+                this.scan = function(item) {
+                    items.push(item);
+                }
             }
 
-            scan = function(item) {
-                items.push(item);
-            }
             describe("cart total", function() {
+
+                beforeEach(function() {
+                    checkout = new Checkout();
+                });
+
                 it("should return 0 when nothing has been scanned", function() {
-                    expect(total()).toEqual(0);
+                    expect(checkout.total()).toEqual(0);
                 });
 
                 it("is 50 with 1 kiwi", function() {
-                    scan("kiwi");
-                    expect(total()).toEqual(50);
+                    checkout.scan("kiwi");
+                    expect(checkout.total()).toEqual(50);
+                });
+
+                it("is 100 with 2 kiwis", function() {
+                    checkout.scan("kiwi");
+                    checkout.scan("kiwi");
+                    expect(checkout.total()).toEqual(100);
                 });
             });
         </script>
