@@ -12,9 +12,9 @@
         <div ng-controller='CheckoutCtrl as app'>
             <h2>Total: {{app.checkout.total}}</h2>
             <!-- <button ng-click='app.add("Kiwi")'>Add</button> -->
-            <item name="Kiwi"></item>
-            <item name="Banana"></item>
-            <item name="Orange"></item>
+            <item name="Kiwi" action='app.add(item)'></item>
+            <item name="Banana" action='app.add(item)'></item>
+            <item name="Orange" action='app.add(item)'></item>
         </div>
     </body>
 </html>
