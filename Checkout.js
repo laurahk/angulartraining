@@ -1,29 +1,29 @@
- function PriceList() {
-    var prices = {
-        "kiwi": {price: 60},
-        "banana": {price: 75}
-    };
+function Checkout(priceList) {
 
-    this.priceFor = function(item) {
-        return prices[item].price;
-    }
- }
-
- function Checkout(priceList) {
-
-    var items = [];
+    // var items = [];
     this.priceList = priceList;
+    this.total = 0;
 
-    this.total = function() {
-        var cost = 0;
-        for (i = 0; i < items.length; i++)
-        {
-            cost += this.priceList.priceFor(items[i]);
-        }
-        return cost;
-    }
+    // this.total = function() {
+    //     var cost = 0;
+    //     for (i = 0; i < items.length; i++)
+    //     {
+    //         //cost += this.priceList.priceFor(items[i]);
+    //         this.priceList.priceFor(items[i]).then(function(price) {
+    //             cost += price;
+    //         });
+    //     }
+    //     return cost;
+    // }
+
+    // this.scan = function(item) {
+    //     items.push(item);
+    // }
 
     this.scan = function(item) {
-        items.push(item);
+        var checkout = this;
+        this.priceList.priceFor(item).then(function(price) {
+            checkout.total += price;
+        });
     }
 }
