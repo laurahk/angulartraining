@@ -8,7 +8,8 @@ CheckoutModule.directive("item", function() {
         },
         //template: '<button>{{fruit}}</button>', // sticks this html inside the element. Can also set to replace the element if you want.
         transclude: true,
-        template: '<button ng-click="action({item:fruit})"><div ng-transclude></div>{{fruit}}</button>',
+        templateUrl: 'item.html',
+        //template: '<button ng-click="action({item:fruit})"><div ng-transclude></div>{{fruit}}</button>',
         link: function(scope, element, attrs) {
             scope.fruit = attrs.name; // name of the item element
             // set this on the scope, so the template function can access it
