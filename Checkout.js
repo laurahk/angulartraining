@@ -26,4 +26,6 @@ function Checkout(priceList) {
             checkout.total += price;
         });
     }
+
+
 }
